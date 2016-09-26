@@ -59,3 +59,11 @@ TEST(FieldTest, RevealAdjacentAtEdge)
   ASSERT_EQ( EMPTY_SHOWN, minefield.get(9,8) );
   ASSERT_EQ( EMPTY_SHOWN, minefield.get(8,9) );
 }
+
+TEST(FieldTest, IsSafe)
+{
+	Field minefield;
+
+	minefield.placeMine(9, 9);
+  ASSERT_TRUE(minefield.isSafe(9,8));
+}
