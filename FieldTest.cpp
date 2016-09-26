@@ -51,14 +51,11 @@ TEST(FieldTest, RevealAdjacentAtEdge)
 {
 	Field minefield;
 
-	minefield.placeMine(4,5);
-	ASSERT_EQ( MINE_HIDDEN, minefield.get(4,5) );
-  minefield.placeMine(9,9);
-	ASSERT_EQ( MINE_HIDDEN, minefield.get(9,9) );
-  minefield.placeMine(0,0);
-	ASSERT_EQ( MINE_HIDDEN, minefield.get(0,0) );
-  minefield.placeMine(0,9);
-  ASSERT_EQ( MINE_HIDDEN, minefield.get(0,9) );
-  minefield.placeMine(9,0);
-  ASSERT_EQ( MINE_HIDDEN, minefield.get(9,0) );
+	minefield.placeMine(9, 9);
+  ASSERT_EQ( MINE_HIDDEN, minefield.get(9,9) );
+
+  minefield.revealAdjacent(9, 9);
+	ASSERT_EQ( MINE_SHOWN, minefield.get(9,9) );
+  ASSERT_EQ( EMPTY_SHOWN, minefield.get(9,8) );
+  ASSERT_EQ( EMPTY_SHOWN, minefield.get(8,9) );
 }
